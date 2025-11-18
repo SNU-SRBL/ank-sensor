@@ -1,0 +1,23 @@
+
+      Moter_control_1[0] = p1_input>>8;
+      Moter_control_1[1] = p1_input&0xFF;
+      Moter_control_1[2] = v1_input>>4;
+      Moter_control_1[3] = ((v1_input&0xF)<<4)+(kp1_input>>8);
+      Moter_control_1[4] = kp1_input&0xFF;
+      Moter_control_1[5] = kv1_input>>4;
+      Moter_control_1[6] = ((kv1_input&0xF)<<4)+((int)t1_input>>8);
+      Moter_control_1[7] = (int)t1_input&0xFF;
+
+      Moter_control_2[0] = p2_input>>8;
+      Moter_control_2[1] = p2_input&0xFF;
+      Moter_control_2[2] = v2_input>>4;
+      Moter_control_2[3] = ((v2_input&0xF)<<4)+(kp2_input>>8);
+      Moter_control_2[4] = kp2_input&0xFF;
+      Moter_control_2[5] = kv2_input>>4;
+      Moter_control_2[6] = ((kv2_input&0xF)<<4)+((int)t2_input>>8);
+      Moter_control_2[7] = (int)t2_input&0xFF;
+
+
+      //c_temp4 = clock();
+      TransmitCanFrame(sock, CAN_ID_Motor_1, Moter_control_1, sizeof(Moter_control_1));
+      TransmitCanFrame(sock, CAN_ID_Motor_2, Moter_control_2, sizeof(Moter_control_2));
